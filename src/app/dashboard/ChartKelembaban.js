@@ -1,18 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-const data = [
-    { value: 52, date: "2025-5-6" },
-    { value: 25, date: "2025-5-5" },
-    { value: 70, date: "2025-5-4" },
-    { value: 35, date: "2025-5-3" },
-    { value: 60, date: "2025-5-2" },
-    { value: 14, date: "2025-5-1" },
-    { value: 62, date: "2025-4-30" }
-]
 
 export default function ChartKelembaban() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/kelembaban-tanah")
+      .then((res) => res.json())
+      .then((data) => {
+        const transformed = data.map(item => ({
+          value: item.nilai,
+          date: new Date(item.timestamp).toLocaleDateString('id-ID', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+          })
+        }));
+        setData(transformed);
+      });
+  }, []);
+
     return (
         <ResponsiveContainer width="100%" minHeight={300}>
             <LineChart data={data}>
