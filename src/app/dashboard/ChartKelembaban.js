@@ -28,9 +28,9 @@ export default function ChartKelembaban() {
             <LineChart data={data}>
         <CartesianGrid />
         <XAxis dataKey="date"/>
-        <YAxis ticks={[20, 40, 60, 80, 100]} domain={[0, 100]} />
+        <YAxis ticks={[200, 400, 600, 800, 1000]} domain={[0, 1000]} />
         <Tooltip />
-        <Line dataKey="value" type="monotone" name="Ketinggian air" />
+        <Line dataKey="value" type="monotone" name="Kelembaban tanah" stroke="#205781" strokeWidth={2}  dot={{ fill: "#205781", stroke: "#ffffff", strokeWidth: 2, r: 4 }} />
         </LineChart>
         </ResponsiveContainer>        
     )

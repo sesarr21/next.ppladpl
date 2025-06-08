@@ -35,9 +35,9 @@ export default function ChartAir() {
       <LineChart data={data}>
         <CartesianGrid />
         <XAxis dataKey="date" />
-        <YAxis ticks={[20, 40, 60, 80, 100]} domain={[0, 100]} />
+        <YAxis ticks={[2, 4, 6, 8, 10]} domain={[0, 10]} />
         <Tooltip />
-        <Line dataKey="value" type="monotone" name="Ketinggian air" stroke="#007bff" />
+        <Line dataKey="value" type="monotone" name="Ketinggian air" stroke="#205781" strokeWidth={2}  dot={{ fill: "#205781", stroke: "#ffffff", strokeWidth: 2, r: 4 }} />
       </LineChart>
     </ResponsiveContainer>
   );
